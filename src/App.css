@@ -1,0 +1,19 @@
+/* ── Responsive main content padding ── */
+/* Nav (64px) + Search area (~100px) = ~164px */
+.app-main {
+  padding-top: 164px;
+}
+
+@media (max-width: 768px) {
+  /* Nav (56px) + Search area (~90px) = ~146px */
+  .app-main {
+    padding-top: 146px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Nav (52px) + Search area (~78px) = ~130px */
+  .app-main {
+    padding-top: 130px;
+  }
+}
