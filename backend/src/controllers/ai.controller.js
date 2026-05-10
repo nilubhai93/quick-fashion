@@ -181,19 +181,18 @@ async function executeProductSearch(args) {
       // Style/Tag Match (10 pts)
       if (args.style_tags?.some(t => p.tags?.includes(t))) score += 10;
 
-      // Material Match (10 pts) - check description if no field
-      const materials = ['cotton', 'linen', 'silk', 'leather', 'denim', 'wool', 'polyester'];
-      const targetMaterial = args.material?.toLowerCase();
-      if (targetMaterial && p.description?.toLowerCase().includes(targetMaterial)) score += 10;
-
       return { ...p.toObject(), matchScore: score };
     })
     .filter(p => p.matchScore >= 40) // Must at least match category
     .sort((a, b) => b.matchScore - a.matchScore)
     .slice(0, 10);
   } else {
-    // Label exact matches as 100%
-    products = products.map(p => ({ ...p.toObject(), matchScore: 100 }));
+    // Determine if this was actually a filtered search or just "get everything"
+    const hasFilters = args.categories?.length || args.style_tags?.length || args.colors?.length || args.occasion || args.gender;
+    products = products.map(p => ({ 
+      ...p.toObject(), 
+      matchScore: hasFilters ? 100 : 50 // Only 100 if we actually searched for something specific
+    }));
   }
 
   return { products, measurementFit };

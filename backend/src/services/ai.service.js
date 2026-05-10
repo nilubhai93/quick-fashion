@@ -231,10 +231,12 @@ export const generateResponse = async (message, context, chatHistory = []) => {
     if (context?.products?.length > 0) {
       const bestMatch = context.products[0];
       const count = context.products.length;
-      return `I found ${count} great option${count > 1 ? 's' : ''} for you! Based on your request, I highly recommend the ${bestMatch.name}${bestMatch.matchScore === 100 ? '. It is an exact match for what you are looking for!' : ' as a very close match.'} ✨`;
+      const isExact = bestMatch.matchScore === 100;
+      
+      return `I found ${count} item${count > 1 ? 's' : ''} that might interest you! ${isExact ? `The ${bestMatch.name} seems like a good fit.` : `I don't have an exact match, but you might like the ${bestMatch.name}.`} 🛍️`;
     }
     
-    return "I'm here to help you find the perfect outfit! I couldn't find an exact match for that specific request right now, but feel free to try another style or occasion! 👗✨";
+    return "I'm having trouble connecting to my full fashion database right now, but I'm here to help! Could you try describing the style or occasion again? 👗✨";
   }
 };
 
@@ -324,8 +326,9 @@ function fallbackIntentExtraction(message) {
   if (intent.args.style_tags.length === 0) intent.args.style_tags = ['trendy'];
 
   // Category detection
-  const categories = ['dress', 'shirt', 'jeans', 'tshirt', 'jacket', 'shoes', 'bag', 'jewelry', 'accessory', 'skirt', 'shorts', 'sweater'];
+  const categories = ['dress', 'shirt', 'jeans', 'tshirt', 'jacket', 'shoes', 'bag', 'jewelry', 'accessory', 'skirt', 'shorts', 'sweater', 'sunglass', 'eyewear', 'watch'];
   intent.args.categories = categories.filter(c => lower.includes(c));
+  if (lower.includes('sunglasses')) intent.args.categories.push('sunglass');
 
   // Color detection
   const colors = ['black', 'white', 'red', 'blue', 'green', 'pink', 'yellow', 'purple', 'navy', 'beige', 'grey', 'gray', 'silver', 'gold', 'brown'];
