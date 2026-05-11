@@ -164,3 +164,11 @@
 [2026-05-10T19:46:43.304Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
 [2026-05-10T19:46:46.514Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
 [2026-05-10T19:46:46.762Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
+[2026-05-10T19:47:50.787Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
+[2026-05-10T19:50:25.230Z] Query: "undefined", Found: 0, Filter: {"isActive":{"$ne":false},"category":"kids"}
+[2026-05-10T19:50:25.503Z] Query: "undefined", Found: 0, Filter: {"isActive":{"$ne":false},"category":"kids"}
+[2026-05-10T19:50:27.689Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
+[2026-05-10T19:50:32.785Z] Query: "undefined", Found: 1, Filter: {"isActive":{"$ne":false},"occasion":{"$in":["office"]}}
+[2026-05-10T19:50:33.074Z] Query: "undefined", Found: 1, Filter: {"isActive":{"$ne":false},"occasion":{"$in":["office"]}}
+[2026-05-10T19:50:37.708Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
+[2026-05-10T20:18:19.524Z] Query: "undefined", Found: 10, Filter: {"isActive":{"$ne":false}}
